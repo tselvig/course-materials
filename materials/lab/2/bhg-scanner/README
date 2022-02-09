@@ -1,1 +1,8 @@
-You might need to do a "go mod init bhg-scanner" or "go mod tidy"
+The code in scanner.go creates multiple workers that run concurrently and check and see if a port is open. If a port is open
+then it is appended to a list of open ports, otherwise it is appended to a list of closed ports. At the end both lists are
+printed. The code in main.go simply runs the port scanner code, and the code in scanner_test.go tests to make sure that the
+port scanner found the correct number of open ports and that it scanned all of the ports that it was supposed to. I modified
+scanner.go to have a list of closed ports, have a usage description, have a shorter timeout when checking if a port is open,
+print all of the closed ports, format the prints nicer, and changed the size of the channel used to store ports. For part 
+5 I made it so that the PortScanner function takes a maxPort parameter that will decide how many ports the scanner scans.
+I also updated the test cases to reflect the updated scanner.
